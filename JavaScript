@@ -1,0 +1,42 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const errorMessage = document.getElementById('errorMessage');
+    const userDisplay = document.getElementById('userDisplay');
+    const logoutButton = document.getElementById('logoutButton');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple client-side validation
+            if (username === 'user' && password === 'pass') {
+                localStorage.setItem('loggedIn', 'true');
+                localStorage.setItem('username', username);
+                window.location.href = 'dashboard.html';
+            } else {
+                errorMessage.textContent = 'Invalid username or password';
+            }
+        });
+    }
+
+    if (userDisplay) {
+        const loggedIn = localStorage.getItem('loggedIn');
+        const username = localStorage.getItem('username');
+
+        if (loggedIn && username) {
+            userDisplay.textContent = username;
+        } else {
+            window.location.href = 'index.html';
+        }
+    }
+
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function() {
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('username');
+            window.location.href = 'index.html';
+        });
+    }
+});
