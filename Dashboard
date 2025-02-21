@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Welcome, <span id="userDisplay"></span></h2>
+        <p>Your current balance is: <strong>$5,000</strong></p>
+        <button id="logoutButton">Logout</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
